@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faiz | Web Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+text-decoration:none;
+list-style:none;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0a0a0a;
+color:white;
+}
+boy{
+font-family:'Poppins',sans-serif;
+color:white;
+background:linear-gradient(
+-45deg,
+#0a0a0a,
+#1a0000,
+#330000,
+#0a0a0a
+);
+background-size:400% 400%;
+animation:gradientBG 12s ease infinite;
+}
+
+/* GRADIENT ANIMATION */
+@keyframes gradientBG{
+0%{
+background-position:0% 50%;
+}
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
+}
+
+
+.header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#0a0a0a;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:700;
+}
+.logo span{ color:#ff0000; }
+
+.nav{ display:flex; }
+
+.nav a{
+color:white;
+margin-left:20px;
+font-size:14px;
+transition:.3s;
+}
+
+.nav a:hover,
+.nav a.active{
+color:#ff0000;
+}
+
+
+.menu-btn{
+display:none;
+font-size:24px;
+color:#ff0000;
+cursor:pointer;
+}
+
+@media(max-width:900px){
+
+.nav{
+position:absolute;
+top:80px;
+right:-100%;
+background:#111;
+flex-direction:column;
+width:200px;
+padding:20px;
+border-radius:10px;
+transition:.3s;
+}
+
+.nav.active{ right:8%; }
+
+.nav a{
+margin:15px 0;
+color:#ff0000;
+}
+
+.menu-btn{ display:block; }
+
+.hero{ flex-direction:column; text-align:center; }
+}
+
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:120px 8% 60px;
+gap:50px;
+flex-wrap:wrap;
+}
+
+.hero-left h1{ font-size:42px; }
+.hero-left span{ color:#ff0000; }
+
+.btn{
+padding:12px 26px;
+border-radius:30px;
+font-size:14px;
+font-weight:600;
+transition:.3s;
+display:inline-block;
+margin-top:20px;
+}
+
+.primary{
+background:#ff0000;
+color:white;
+box-shadow:0 0 20px rgba(255,0,0,0.6);
+}
+
+.primary:hover{ transform:translateY(-3px); }
+
+.outline{
+border:2px solid #ff0000;
+color:#ff0000;
+margin-left:10px;
+}
+
+.outline:hover{
+background:#ff0000;
+color:black;
+}
+
+
+.skills-icons{
+display:flex;
+gap:40px;
+align-items:center;
+}
+
+.skills-icons img{
+width:70px;
+transition:.3s;
+filter:drop-shadow(0 0 10px rgba(255,0,0,0.4));
+}
+
+.skills-icons img:hover{
+transform:translateY(-8px);
+filter:drop-shadow(0 0 20px rgba(255,0,0,0.8));
+}
+
+@media(max-width:600px){
+
+.skills-icons{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+justify-items:center;
+}
+
+.skills-icons img:nth-child(1){ grid-column:1; grid-row:1; }
+.skills-icons img:nth-child(2){ grid-column:2; grid-row:1; }
+.skills-icons img:nth-child(3){ grid-column:3; grid-row:1; }
+.skills-icons img:nth-child(4){ grid-column:1 / span 2; grid-row:2; justify-self:center; }
+.skills-icons img:nth-child(5){ grid-column:2 / span 2; grid-row:2; justify-self:center; }
+
+}
+
+
+.section{
+padding:80px 8%;
+text-align:center;
+}
+.section h2{
+color:#ff0000;
+margin-bottom:40px;
+}
+
+  
+
+
+.project-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.project-card{
+background:#111;
+width:280px;
+height:200px;
+border-radius:20px;
+border:2px solid red;
+cursor:pointer;
+transition:.3s;
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+border-color:#ff0000;
+box-shadow:0 0 30px rgba(255,0,0,0.6);
+}
+
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.modal-content{
+background:#111;
+padding:40px;
+border-radius:15px;
+width:90%;
+max-width:500px;
+text-align:center;
+border:2px solid #ff0000;
+position:relative;
+}
+
+.close-btn{
+position:absolute;
+top:15px;
+right:20px;
+font-size:25px;
+color:#ff0000;
+cursor:pointer;
+}
+
+
+.contact-icons{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.contact-icons a{
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:#111;
+border:2px solid #ff0000;
+color:#ff0000;
+font-size:22px;
+transition:.3s;
+}
+
+.contact-icons a:hover{
+background:#ff0000;
+color:black;
+transform:translateY(-5px);
+}
+
+.about-box{
+max-width:800px;
+margin:60px auto;
+padding:40px;
+border:2px solid #ff0000;
+border-radius:15px;
+background:#111;
+
+text-align:left;
+}
+
+.about-box:hover{
+box-shadow:0 0 30px rgba(255,0,0,0.6);
+}
+
+.about-box h2{
+color:#ff0000;
+margin-bottom:20px;
+}
+
+.about-box p{
+line-height:1.6;
+color:#ccc;
+}
+
+.email-card{
+  max-width:800px;
+  max-height: 400px;
+  margin:60px auto;
+  padding:40px;
+  border:2px solid red;
+  border-radius:15px;
+  background:#111;
+}
+.email-card div{
+  color:red;
+  
+}
+.social{
+
+  color:red;
+}
+
+
+.tech-section {
+  background: #0a0a0a;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.tech-section h2 {
+  color: red;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-shadow:
+    0 0 10px red,
+    0 0 30px red;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 25px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.tech-grid div {
+  background: #111;
+  border: 2px solid red;
+  border-radius: 15px;
+  padding: 30px 15px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-grid div i {
+  font-size: 40px;
+  color: red;
+  margin-bottom: 15px;
+  text-shadow:
+    0 0 10px red,
+    0 0 25px red;
+}
+
+.tech-grid div p {
+  color: white;
+  font-size: 1rem;
+}
+
+.tech-grid div:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 0 20px red,
+    0 0 40px rgba(255, 0, 0, 0.6);
+}
+
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="logo">Faiz<span>.Dev</span></div>
+
+<nav class="nav">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="menu-btn">
+<i class="fas fa-bars"></i>
+</div>
+</header>
+
+<section id="home" class="hero">
+
+<div class="hero-left">
+<h1>Hi, I'm </h1>
+<h1><span>Faiz Khan</span></h1>
+<h2 class="typing"></h2>
+<h1><p>A dedicated and creative <span>Web Developer.</span></p></h1>
+<h2><p>Transforming modern concepts into seamless, high-performance digital experiences. <span>Ready for Full-Stack Development.</span></p></h2>
+
+<a href="#contact" class="btn primary">Contact</a>
+<a href="#projects" class="btn outline">View Work</a>
+</div>
+</section>
+<section id="about" class="section">
+  <div class="about-box"
+<h2>About Me</h2>
+<p>I am Faiz Khan, a passionate Web Developer focused on the modern JavaScript ecosystem. My journey involves creating sleek, responsive, and efficient applications. I thrive on solving complex problems and constantly exploring new tools and frameworks to deliver superior user experiences.</p>
+
+<p> My philosophy centers on clean code, modular design, and an unwavering attention to detail—especially when it comes to the user interface. I ensure every project not only functions perfectly but also looks exceptional.</p>
+</div>
+</section>
+
+<section class="tech-section">
+  <h2 class="tech-title">Key Technologies</h2>
+
+  <div class="tech-grid">
+
+    <div class="tech-card">
+      <i class="fab fa-html5"></i>
+      <p>HTML5</p>
+    </div>
+
+    <div class="tech-card">
+      <i class="fab fa-css3-alt"></i>
+      <p>CSS3</p>
+    </div>
+
+    <div class="tech-card">
+      <i class="fab fa-js"></i>
+      <p>JavaScript</p>
+    </div>
+
+    <div class="tech-card">
+      <i class="fab fa-react"></i>
+      <p>React.js</p>
+    </div>
+
+    <div class="tech-card">
+      <i class="fab fa-node-js"></i>
+      <p>Node.js</p>
+    </div>
+
+    <div class="tech-card">
+      <i class="fas fa-database"></i>
+      <p>Database</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="projects" class="section">
+<h2>Projects</h2>
+<div class="project-container">
+<div class="project-card" onclick="openModal('Project 1')"></div>
+<div class="project-card" onclick="openModal('Project 2')"></div>
+<div class="project-card" onclick="openModal('Project 3')"></div>
+</div>
+</section>
+
+<section id="contact" class="section">
+<h2>Let's Connnect</h2>
+<p class="contact-subtext">
+Have a project idea, or just want to chat about web development?
+    Send me an email — I'd love to hear from you.
+    <div class="email-card">
+      <p class="email-label">My Work Email</p>
+      <div>khan0.exe@gmail.com</div>
+      </div>
+
+</p>
+<div class="social">
+  <p>Follow  me on Social platforms</p>
+</div>
+
+
+
+<div class="contact-icons">
+<a href="https://www.instagram.com/khan0.exe?igsh=eXhxdXBjMzBxMHc5"><i class="fab fa-instagram"></i></a>
+<a href="https://www.threads.com/@khan0.exe"><i class="fab fa-threads"></i></a>
+<a href="https://github.com/khan-0exe"><i class="fab fa-github"></i></a>
+</div>
+
+</section>
+
+
+<div class="modal" id="modal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal()">&times;</span>
+<h2 id="modal-title"></h2>
+<p>This is where your project details will go.</p>
+</div>
+</div>
+
+<script>
+
+
+const menuBtn=document.querySelector(".menu-btn");
+const nav=document.querySelector(".nav");
+
+menuBtn.addEventListener("click",(e)=>{
+nav.classList.toggle("active");
+e.stopPropagation();
+});
+
+document.addEventListener("click",(e)=>{
+if(!nav.contains(e.target)&&!menuBtn.contains(e.target)){
+nav.classList.remove("active");
+}
+});
+
+
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll(".nav a");
+
+window.addEventListener("scroll",()=>{
+let current="";
+sections.forEach(section=>{
+const sectionTop=section.offsetTop-150;
+if(pageYOffset>=sectionTop){
+current=section.getAttribute("id");
+}
+});
+
+navLinks.forEach(link=>{
+link.classList.remove("active");
+if(link.getAttribute("href")==="#"+current){
+link.classList.add("active");
+}
+});
+});
+
+
+const roles=["Web Developerr","Game Developerr"];
+let i=0,j=0,current="",isDeleting=false;
+const typing=document.querySelector(".typing");
+
+function typeEffect(){
+if(!isDeleting&&j<=roles[i].length){current=roles[i].substring(0,j++);}
+else if(isDeleting&&j>=0){current=roles[i].substring(0,j--);}
+typing.innerHTML=current;
+
+if(j===roles[i].length){isDeleting=true;setTimeout(typeEffect,1200);return;}
+if(j===0&&isDeleting){isDeleting=false;i=(i+1)%roles.length;}
+setTimeout(typeEffect,isDeleting?50:100);
+}
+typeEffect();
+
+function openModal(title){
+document.getElementById("modal-title").innerText=title;
+document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+window.onclick=function(e){
+if(e.target==document.getElementById("modal")){
+closeModal();
+}
+}
+</script>
+
+</body>
+</html>
